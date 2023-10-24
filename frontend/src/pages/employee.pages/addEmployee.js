@@ -1,52 +1,50 @@
 import * as React from "react";
 import { useState} from "react";
-import BackButton from "../components/backButton";
-import Spinner from "../components/spinner";
+import BackButton from "../../components/backButton";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import {useSnackbar} from 'notistack';
 import axios from "axios";
-import Alert from '@mui/material/Alert';
+import NavBar from "../../components/navBar";
 
-function NewCargo(name, description, storedBy, storeID, status, amount) {
-  return { name, description, storedBy, storeID, status, amount };
+function NewEmployee(id, firstname, lastname, address, salary) {
+  return { id, firstname, lastname, address, salary };
 }
 
-const AddCargo = () => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [storedBy, setStoredBy] = useState("");
-  const [storeID, setStoreID] = useState("");
-  const [status, setStatus] = useState("In store");
-  const [amount, setAmount] = useState(0);
+const AddEmployee = () => {
+  const [id, setId] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [address, setAddress] = useState("");
+  const [salary, setSalary] = useState(0);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {enqueueSnackbar} = useSnackbar();
 
-  const handleSaveVoter = () => {
-    const data = NewCargo(name, description, storedBy, storeID, status, amount);
+  const handleSaveEmployee = () => {
+    const data = NewEmployee(id, firstname, lastname, address, salary);
 
     setLoading(true);
     axios
-      .post(`http://localhost:3030/api/cargoes/new`, data)
+      .post(`http://localhost:3030/api/employees/new`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Record added successfully', {variant: 'success'});
-        navigate("/");
+        navigate("/employee/");
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
-        alert("An error happened. Please Chack console");
-        enqueueSnackbar('Error', { variant: 'error' });
+        enqueueSnackbar("Error", { variant: 'error' });
       });
   };
   return (
     <div className="p-4">
+      <NavBar></NavBar>
+      <br/>
       <BackButton />
-      {loading ? <Spinner /> : ""}
       <Grid
         container
         justifyContent="center"
@@ -54,57 +52,59 @@ const AddCargo = () => {
         style={{ height: "100vh" }}
       >
         <form autoComplete="off" Validate>
-          <h1 className="text-3xl my-4 ">Add New Cargo</h1>
+          <h1 className="text-3xl my-4 ">Add New employee</h1>
 
           <TextField
-            label="Name"
+            label="Employee ID"
             variant="outlined"
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             fullWidth
             required
             margin="normal"
           />
           <TextField
-            label="Discription"
+            label="First name"
             variant="outlined"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
             fullWidth
+            required
             margin="normal"
           />
           <TextField
-            label="Store ID"
-            variant="outlined"
-            type="text"
-            value={storeID}
-            onChange={(e) => setStoreID(e.target.value)}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Store By"
+            label="Last name"
             variant="outlined"
             type="text"
-            value={storedBy}
-            onChange={(e) => setStoredBy(e.target.value)}
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
             fullWidth
             margin="normal"
           />
           <TextField
-            label="Handling fee ($)"
+            label="Address"
+            variant="outlined"
+            type="text"
+            required
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Salary ($)"
             variant="outlined"
             type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={salary}
+            required
+            onChange={(e) => setSalary(e.target.value)}
             fullWidth
             margin="normal"
           />
           <Button
-            variant="contained"
-            
-            onClick={handleSaveVoter}
+            variant="contained"  
+            onClick={handleSaveEmployee}
             color="primary"
           >
             Save
@@ -115,4 +115,4 @@ const AddCargo = () => {
   );
 };
 
-export default AddCargo;
+export default AddEmployee;

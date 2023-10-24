@@ -1,35 +1,31 @@
-import mongoose from 'mongoose';
-
+import mongoose from "mongoose";
 
 const cargoSchema = mongoose.Schema(
-     {      
-       
-          name:{
-               type: String ,
-               required : true,
-          },
-          description:{
-               type:String
-          },
-          category:{
-               type : String
-          },
-          storedBy:{
-               type : String
-          },
-          storeID:{
-               type : String
-          },
-          status:{
-               type: String,
-          },
-          amount:{
-               type: Number
-          },
-     },     
-          {
-               timestamps: true
-          }
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    storedBy: {
+      type: String,
+      required: true,
+    },
+    storeID: {
+      type: String,
+      required: true,
+    },
+
+    amount: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
-export const Cargo = mongoose.model('Cargo',cargoSchema);
+export const Cargo = mongoose.model("Cargo", cargoSchema);

@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useNavigate} from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
 
 const BackButton = () => {
+     let navigate = useNavigate()
   return (
      <div className='flex'>
-          <Link to='/'>
-               <Button variant="outlined"  startIcon={<ArrowBackIcon />}>
+          
+               <Button onClick={() => navigate(-1)} variant="outlined"  startIcon={<ArrowBackIcon />}>
                </Button>
-          </Link>
+          
      </div>
      
      
