@@ -54,100 +54,87 @@ const directLoginPage = () =>{
      navigate("/");
 }
 
-  return (
-     <div >
-     <Grid
-       container
-       
-       justifyContent="center"
-       alignItems="center"
-       style={{ height: "100vh" }}
-     >
-       <form autoComplete="off" Validate>
-         <h1 >Create an account</h1>
 
-         <TextField
-           label="Email"
-           variant="outlined"
-           value={email}
-           required
-            fullWidth
-            
-            autoComplete="email"
-            autoFocus
-           type="text"
-           onChange={(e) => setEmail(e.target.value)}
-           fullWidth
-           required
-           margin="normal"
-         />
-         <TextField
-           label="Username"
-           variant="outlined"
-           value={username}
-           required
-            fullWidth
-            
-            
-            autoFocus
-           type="text"
-           onChange={(e) => setUsername(e.target.value)}
-           fullWidth
-           required
-           margin="normal"
-         />
-         <TextField
-           value = {password}
-           variant="outlined"
-           required
-           fullWidth
-           onChange={(e) => setPassword(e.target.value)}
-           label="Password"
-           type="password"
-           autoComplete="current-password"
-           fullWidth
-           margin="normal"
-         />
-         <TextField
-           value = {confirmpassword}
-           variant="outlined"
-           required
-           fullWidth
-           onChange={(e) => setConfirmpassword(e.target.value)}
-           label="Confirm Password"
-           type="password"
-           autoComplete="current-password"
-           fullWidth
-           margin="normal"
-         />
-        <FormControlLabel
-            control={
-              <Checkbox
-                
-                color="primary"
-              />
-            }
-            label="I agree to the Terms and Conditions"
-          />
-           <Link 
-      component="button"
-      variant="body1"
-      onClick={directLoginPage}
+return (
+  <div>
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      style={{ height: "100vh" }}
     >
-      Already have an account ?
-    </Link>
-         <Button
-           variant="contained"
-           onClick={handleSignup}
-           fullWidth
-           color="primary"
-         >
-           Create Account
-         </Button>
-       </form>
-     </Grid>
-   </div>
-  );
+      <form autoComplete="off" Validate style={{ width: "300px" }}>
+        <h1>Create an account</h1>
+        <TextField
+          label="Email"
+          variant="outlined"
+          value={email}
+          required
+          fullWidth
+          autoComplete="email"
+          autoFocus
+          type="text"
+          onChange={(e) => setEmail(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Username"
+          variant="outlined"
+          value={username}
+          required
+          fullWidth
+          autoFocus
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          value={password}
+          variant="outlined"
+          required
+          fullWidth
+          onChange={(e) => setPassword(e.target.value)}
+          label="Password"
+          type="password"
+          autoComplete="new-password"
+          margin="normal"
+        />
+        <TextField
+          value={confirmpassword}
+          variant="outlined"
+          required
+          fullWidth
+          onChange={(e) => setConfirmpassword(e.target.value)}
+          label="Confirm Password"
+          type="password"
+          autoComplete="new-password"
+          margin="normal"
+        />
+        <FormControlLabel
+          control={<Checkbox color="primary" />}
+          label="I agree to the Terms and Conditions"
+        />
+        <Link
+          component="button"
+          variant="body1"
+          onClick={directLoginPage}
+          style={{ marginBottom: "10px", display: "block", textAlign: "center" }}
+        >
+          Already have an account ?
+        </Link>
+        <Button
+          variant="contained"
+          onClick={handleSignup}
+          fullWidth
+          color="primary"
+          style={{ marginBottom: "10px" }}
+        >
+          Create Account
+        </Button>
+      </form>
+    </Grid>
+  </div>
+);
 }
 
 export default Signup;

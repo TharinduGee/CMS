@@ -61,14 +61,16 @@ const CustomizedTables = () => {
     <div>
       <NavBar />
       <br></br>
-
-      <TableContainer component={Paper}>
-        <Link to="/cargo/add">
-          <Button variant="outlined" startIcon={<AddBoxIcon />}>
-            Add New cargo
+      <div style={{ marginLeft: "20px", marginRight: "20px" , marginBottom : "15px"}}>
+        <Link to="/cargo/add" style={{ textDecoration: "none", marginRight: "10px" }}>
+          <Button variant="outlined" startIcon={<AddBoxIcon />} color="primary">
+            Add New Cargo
           </Button>
         </Link>
-        <Table sx={{ minWidth: 700, p: 10 }} aria-label="customized table">
+        
+      </div>
+      <TableContainer component={Paper}>
+        <Table  sx={{ maxWidth: 1875, p: 10 }} style={{ marginLeft: "20px", marginRight: "20px" }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Cargo ID</StyledTableCell>

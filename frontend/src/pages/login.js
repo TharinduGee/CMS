@@ -53,61 +53,58 @@ const data = {
   };
 
   return (
-    <div>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        style={{ height: "100vh" }}
-      >
-        <form autoComplete="off" Validate>
-          <h1>Login</h1>
-
-          <TextField
-            label="Email"
-            variant="outlined"
-            value={email}
-            required
-            fullWidth
-            autoComplete="email"
-            autoFocus
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            fullWidth
-            required
-            margin="normal"
-          />
-          <TextField
-            value={password}
-            variant="outlined"
-            required
-            fullWidth
-            onChange={(e) => setPassword(e.target.value)}
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            fullWidth
-            margin="normal"
-          />
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      style={{ height: "100vh" }}
+    >
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <h1>Login</h1>
+        <TextField
+          label="Email"
+          variant="outlined"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          fullWidth
+          autoComplete="email"
+          autoFocus
+          style={{ marginBottom: "10px", width: "300px" }}
+        />
+        <TextField
+          label="Password"
+          variant="outlined"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          required
+          fullWidth
+          autoComplete="current-password"
+          style={{ marginBottom: "10px", width: "300px" }}
+        />
+        <Button
+          variant="contained"
+          onClick={handleLogin}
+          fullWidth
+          color="primary"
+          style={{ marginBottom: "10px", width: "100px" }}
+        >
+          Log In
+        </Button>
+        <p>
+          <span>Don't have an account? </span>
           <Link
             component="button"
             variant="body1"
-            align="center"
             onClick={directSignupPage}
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
           >
-            Create an account
+            Sign Up
           </Link>
-          <Button
-            variant="contained"
-            onClick={handleLogin}
-            fullWidth
-            color="primary"
-          >
-            Log In
-          </Button>
-        </form>
-      </Grid>
-    </div>
+        </p>
+      </div>
+    </Grid>
   );
 };
 

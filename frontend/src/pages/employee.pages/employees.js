@@ -64,11 +64,11 @@ const CustomizedTables = () => {
 
       <TableContainer component={Paper}>
         <Link to= "/employee/add" >
-          <Button variant="outlined" startIcon={<AddBoxIcon />}>
+          <Button variant="outlined" style={{ marginLeft: "20px", marginRight: "20px" , marginBottom : "15px"}} startIcon={<AddBoxIcon />}>
             Add New Employee
           </Button>
         </Link>
-        <Table sx={{ minWidth: 700, p: 10 }} aria-label="customized table">
+        <Table sx={{ maxWidth: 1875, p: 10 }} style={{ marginLeft: "20px", marginRight: "20px" }}  aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>ID</StyledTableCell>

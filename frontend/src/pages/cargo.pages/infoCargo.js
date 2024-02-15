@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid'
 import {useState, useEffect} from 'react';
-import {useSnackbar} from 'notistack';
 import { useNavigate ,useParams} from 'react-router-dom';
 import axios from 'axios';
 import BackButton from '../../components/backButton';
@@ -16,7 +15,6 @@ import NavBar from "../../components/navBar";
 export default function OutlinedCard() {
 
      const [cargoinfo, setCargoinfo] = useState({_id:3433});
-     const {enqueueSnackbar} = useSnackbar();
      const [loading, setLoading] = useState(false);
      const {id} = useParams()
 
